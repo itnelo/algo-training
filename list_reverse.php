@@ -51,10 +51,10 @@ $prev = null;
 $next = null;
 
 while ($curr != null) {
-    $next = $curr->next;
-    $curr->next = $prev;
-    $prev = $curr;
-    $curr = $next;
+    $next = $curr->next;//2
+    $curr->next = $prev;//null
+    $prev = $curr;//1
+    $curr = $next;//2
 }
 
 $tail = $prev;
