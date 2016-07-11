@@ -15,25 +15,16 @@ class Node
     /**
      * @var int
      */
-    public $value;
+    public $data;
 
     /**
-     * @param int $value
+     * @param int $data
+     * @param Node $next
      */
-    function __construct($value)
+    function __construct($data, $next = null)
     {
-        $this->value = $value;
-    }
-}
-
-function printList(Node $tail)
-{
-    $elem = $tail;
-
-    while (!is_null($elem)) {
-        echo $elem->value . PHP_EOL;
-
-        $elem = $elem->next;
+        $this->data = $data;
+        $this->next = $next;
     }
 }
 
@@ -42,21 +33,19 @@ $tail->next = new Node(2);
 $tail->next->next = new Node(3);
 $tail->next->next->next = new Node(4);
 
-//printList($tail);
-
-// 1. new list
+print_r($tail);
 
 $curr = $tail;
 $prev = null;
 $next = null;
 
 while ($curr != null) {
-    $next = $curr->next;//2
-    $curr->next = $prev;//null
-    $prev = $curr;//1
-    $curr = $next;//2
+    $next = $curr->next;
+    $curr->next = $prev;
+    $prev = $curr;
+    $curr = $next;
 }
 
 $tail = $prev;
 
-printList($tail);
+print_r($tail);

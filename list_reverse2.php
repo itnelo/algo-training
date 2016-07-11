@@ -7,36 +7,30 @@
 
 class Node
 {
+    /**
+     * @var int
+     */
+    public $data;
+
+    /**
+     * @var Node
+     */
     public $next;
 
-    public $value;
-
-    function __construct($value, $next = null)
+    /**
+     * @param int $data
+     * @param Node $next
+     */
+    function __construct($data, $next = null)
     {
-        $this->value = $value;
+        $this->data = $data;
         $this->next = $next;
-    }
-
-    public function printValue()
-    {
-        echo $this->value . PHP_EOL;
-    }
-
-    public function dump()
-    {
-        $this->printValue();
-        $node = $this;
-
-        /** @var Node $node */
-        while ($node = $node->next) {
-            $node->printValue();
-        }
     }
 }
 
 $tail = new Node(1, new Node(2, new Node(3, new Node(4))));
 
-//$tail->dump();
+print_r($tail);
 
 $prev = null;
 $curr = $tail;
@@ -51,4 +45,4 @@ while ($curr != null) {
 
 $tail = $prev;
 
-$tail->dump();
+print_r($tail);
